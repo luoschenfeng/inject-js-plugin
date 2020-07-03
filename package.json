@@ -1,0 +1,16 @@
+{
+  "name": "inject-js-plugin",
+  "version": "0.0.1",
+  "description": "add the htmlWebpackPlugin js chunks to the custom scope",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luoschenfeng/inject-js-plugin.git"
+  },
+  "author": "luoschenfeng <luoschenfeng@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "html-webpack-plugin": "^4.3.0"
+  }
+}
