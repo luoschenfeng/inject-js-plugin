@@ -1,6 +1,6 @@
 {
   "name": "inject-js-plugin",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "add the htmlWebpackPlugin js chunks to the custom scope",
   "main": "index.js",
   "repository": {
