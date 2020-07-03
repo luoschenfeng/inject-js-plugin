@@ -1,7 +1,7 @@
 // If your plugin is direct dependent to the html webpack plugin:
 const HtmlWebpackPlugin = require('html-webpack-plugin')
  
-class injectJsPlugin {
+class InjectJsPlugin {
   /**
    * 
    * @param {object} [scope]
@@ -31,11 +31,11 @@ class injectJsPlugin {
   }
   
   apply (compiler) {
-    compiler.hooks.compilation.tap('injectJsPlugin', (compilation) => {
+    compiler.hooks.compilation.tap('InjectJsPlugin', (compilation) => {
  
       // Staic Plugin interface |compilation |H OOK NAME | register listener 
       HtmlWebpackPlugin.getHooks(compilation).afterTemplateExecution.tapAsync(
-        'injectJsPlugin', // <-- Set a meaningful name here for stacktraces
+        'InjectJsPlugin', // <-- Set a meaningful name here for stacktraces
         (data, cb) => {
           let bodyTagList = data.bodyTags.map(this.scriptTagLine)
 
@@ -54,4 +54,4 @@ class injectJsPlugin {
   }
 }
  
-module.exports = injectJsPlugin
+module.exports = InjectJsPlugin

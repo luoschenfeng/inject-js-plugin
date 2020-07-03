@@ -13,7 +13,7 @@ npm install --save-dev inject-js-plugin
 ```
 plugins: [
   new HtmlWebpackPlugin(),
-  new HtmlWebpackExcludeAssetsPlugin()
+  new InjectJsPlugin()
 ]
 ```
 
@@ -22,7 +22,7 @@ RegExp is `${leftSign}(${scopeText ? scopeText : '\\\s*'})${rightSign}`, match l
 ```
 plugins: [
   new HtmlWebpackPlugin(),
-  new HtmlWebpackExcludeAssetsPlugin({
+  new InjectJsPlugin({
       leftSign: '{ boock selfJs }',
       rightSign: '{ /endblock }'
   })
