@@ -28,7 +28,3 @@ plugins: [
   })
 ]
 ```
-
-## Keywords
-
-webpackplugin html-webpack-plugin inject

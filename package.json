@@ -7,6 +7,12 @@
     "type": "git",
     "url": "https://github.com/luoschenfeng/inject-js-plugin.git"
   },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "html-webpack-plugin",
+    "inject js"
+  ],
   "author": "luoschenfeng <luoschenfeng@gmail.com>",
   "license": "MIT",
   "private": false,
