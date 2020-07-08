@@ -17,6 +17,9 @@ class InjectJsPlugin {
     if (tag.tagName !== 'script' || !(tag.attributes && tag.attributes.src)) {
       return
     }
+    if (tag.innerHTML && !(tag.attributes && tag.attributes.src) ) {
+      return `<${tag.tagName}>tag.innerHTML</${tag.tagName}>`
+    }
     return `<${tag.tagName} src="${tag.attributes.src}${tag.attributes.defer ? ' defer' : ''}"></${tag.tagName}>`
   }
 
