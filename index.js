@@ -13,14 +13,18 @@ class InjectJsPlugin {
     // this.htmlWebpackPlugin = htmlWebpackPlugin;
     this.scope = scope ? scope: {leftSign: '{% block selfJs %}', rightSign: '{% endblock %}', scopeText: ''};
   }
-  scriptTagLine(tag) { 
-    if (tag.tagName !== 'script' || !(tag.attributes && tag.attributes.src)) {
+  scriptTagLine(tag) {
+    if (tag.tagName === 'script') {
+      if (tag.attributes && tag.attributes.src) {
+        return `<${tag.tagName} src="${tag.attributes.src}${tag.attributes.defer ? ' defer' : ''}"></${tag.tagName}>`
+      } else if (tag.innerHTML) {
+        return `<${tag.tagName}>${tag.innerHTML}</${tag.tagName}>`
+      } else {
+        return
+      }
+    } else {
       return
     }
-    if (tag.innerHTML && !(tag.attributes && tag.attributes.src) ) {
-      return `<${tag.tagName}>tag.innerHTML</${tag.tagName}>`
-    }
-    return `<${tag.tagName} src="${tag.attributes.src}${tag.attributes.defer ? ' defer' : ''}"></${tag.tagName}>`
   }
 
   createScriptScope(bodyTagList) {
@@ -41,7 +45,6 @@ class InjectJsPlugin {
         'InjectJsPlugin', // <-- Set a meaningful name here for stacktraces
         (data, cb) => {
           let bodyTagList = data.bodyTags.map(this.scriptTagLine)
-
           const pattern = new RegExp(`${this.scope.leftSign}(${this.scope.scopeText ? this.scope.scopeText : '\\\s*'})${this.scope.rightSign}`);
           if (pattern.test(data.html)) {
             let matches = pattern.exec(data.html)
